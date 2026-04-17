@@ -109,10 +109,8 @@
         <button class="btn" onclick="exportToExcel()">Download Database.xlsx</button>
     </div>
 
-    <!-- Hidden Setup GitHub Cloud Uplink (Hardcoded to bypass scanner) -->
-    <div class="card" style="display: none;">
-
-        <div class="card">
+    <!-- Step 2 is now hardcoded internally. Moving to Step 3. -->
+    <div class="card">
             <h2>3. Import & Auto-Push Updates</h2>
             <p>Drag your updated Database.xlsx here. It will convert and beam directly live to your Github!</p>
             <label for="excelUpload">
@@ -125,7 +123,10 @@
         </div>
 
         <script>
-        });
+            function handleExcelUpload(e) {
+                const file = e.target.files[0];
+                if (file) processExcelFile(file);
+            }
 
             // --- Excel Processing & GitHub Push ---
             async function processExcelFile(file) {
